@@ -19,7 +19,7 @@ app.use("/api/blogs", blogRoutes);
 
 app.get("/", (req, res) => {
     res.json({
-        message: "BlogCraft Backend API is running"
+        message: "DevLog Backend API is running"
     });
 });
 
@@ -28,7 +28,7 @@ const startServer = async () => {
         await connectDB();
 
         app.listen(PORT, "0.0.0.0", () => {
-            console.log(`BlogCraft backend running on port ${PORT}`);
+            console.log(`DevLog backend running on port ${PORT}`);
         });
     } catch (error) {
         console.error("Backend startup failed:", error.message);

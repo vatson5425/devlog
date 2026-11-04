@@ -1,6 +1,6 @@
 
 /**
- * BlogCraft — content.js
+ * DevLog — content.js
  * Seed content, MongoDB integration, images, homepage and details page.
  */
 
@@ -178,7 +178,7 @@ const SEED_CONTENT = [
 // IMAGE MANAGEMENT
 // ══════════════════════════════════════════════════════════════════════════════
 
-const BLOGCRAFT_IMAGES = [
+const DEVLOG_IMAGES = [
   'assets/images/article-javascript.jpg',
   'assets/images/article-cybersecurity.jpg',
   'assets/images/article-ai.jpg',
@@ -264,20 +264,20 @@ function createUniqueImage(title, usedImages = new Set()) {
 
   if (mapping) return mapping.image;
 
-  return BLOGCRAFT_IMAGES.find(
+  return DEVLOG_IMAGES.find(
     image => !usedImages.has(image)
   ) || null;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// MONGODB → BLOGCRAFT FORMAT
+// MONGODB → DEVLOG FORMAT
 // ══════════════════════════════════════════════════════════════════════════════
 
 function normalizeBlog(blog) {
   const authorName =
     typeof blog.author === 'object'
-      ? blog.author?.name || 'BlogCraft Author'
-      : blog.author || 'BlogCraft Author';
+      ? blog.author?.name || 'DevLog Author'
+      : blog.author || 'DevLog Author';
 
   const authorEmail =
     typeof blog.author === 'object'
@@ -304,7 +304,7 @@ function normalizeBlog(blog) {
     description:
       blog.description ||
       plainText.slice(0, 180) ||
-      'Read this article on BlogCraft.',
+      'Read this article on DevLog.',
     content: blog.content || '',
     tags: Array.isArray(blog.tags) ? blog.tags : [],
     image:
@@ -312,7 +312,7 @@ function normalizeBlog(blog) {
         ? blog.image.trim()
         : '',
     author: authorName,
-    authorInitials: authorInitials || 'BC',
+    authorInitials: authorInitials || 'DL',
     authorEmail,
     date: blog.createdAt || blog.date || new Date().toISOString(),
     status: blog.status || 'published',
@@ -344,7 +344,7 @@ async function fetchBlogsFromBackend() {
 
     return data.blogs.map(normalizeBlog);
   } catch (error) {
-    console.error('Failed to fetch BlogCraft articles:', error);
+    console.error('Failed to fetch DevLog articles:', error);
     return null;
   }
 }
@@ -427,7 +427,7 @@ async function refreshBackendContent() {
   const backendBlogs = await fetchBlogsFromBackend();
 
   if (backendBlogs === null) {
-    console.warn('Backend unavailable. Keeping local BlogCraft content.');
+    console.warn('Backend unavailable. Keeping local DevLog content.');
     backendContent = getAllLocalContent();
     return backendContent;
   }
@@ -503,7 +503,7 @@ async function refreshBackendContent() {
   backendContent = finalArticles;
   Storage.setContent(finalArticles);
 
-  console.log(`BlogCraft: ${finalArticles.length} articles loaded`);
+  console.log(`DevLog: ${finalArticles.length} articles loaded`);
 
   return finalArticles;
 }
@@ -595,7 +595,7 @@ function renderCard(item) {
                 loading="lazy"
                 onerror="this.style.display='none'"
               >`
-      : `<div class="blogcraft-image-placeholder">✨</div>`
+      : `<div class="devlog-image-placeholder">✨</div>`
     }
 
         <span class="card-category">${item.category || 'General'}</span>
@@ -608,12 +608,12 @@ function renderCard(item) {
         <div class="card-footer">
           <div class="card-author">
             <div class="card-avatar" aria-hidden="true">
-              ${item.authorInitials || 'BC'}
+              ${item.authorInitials || 'DL'}
             </div>
 
             <div>
               <div style="font-weight:600;color:var(--text-secondary)">
-                ${item.author || 'BlogCraft Author'}
+                ${item.author || 'DevLog Author'}
               </div>
               <div>${dateStr}</div>
             </div>
@@ -651,7 +651,7 @@ async function initHomepageContent() {
     <div class="empty-state" style="grid-column:1/-1;">
       <div class="empty-icon">⏳</div>
       <h3>Loading articles...</h3>
-      <p>Fetching the latest articles from BlogCraft.</p>
+      <p>Fetching the latest articles from DevLog.</p>
     </div>
   `;
 
@@ -848,9 +848,9 @@ async function initDetailsPage() {
       <div class="article-meta">
         <div class="meta-author">
           <div class="card-avatar" style="width:32px;height:32px;font-size:12px">
-            ${article.authorInitials || 'BC'}
+            ${article.authorInitials || 'DL'}
           </div>
-          <span>${article.author || 'BlogCraft Author'}</span>
+          <span>${article.author || 'DevLog Author'}</span>
         </div>
         <span>📅 ${dateStr}</span>
         <span>👁 ${(article.views || 0).toLocaleString()} views</span>
@@ -938,7 +938,7 @@ async function initDetailsPage() {
     });
   }
 
-  document.title = `${article.title || 'Article'} — BlogCraft`;
+  document.title = `${article.title || 'Article'} — DevLog`;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════

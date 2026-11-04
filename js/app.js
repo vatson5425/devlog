@@ -1,5 +1,5 @@
-﻿/**
- * BlogCraft — app.js
+/**
+ * DevLog — app.js
  * Core application utilities: navbar, animations, toasts, modals
  */
 
@@ -150,11 +150,19 @@ window.redirectIfAuth = redirectIfAuth;
 // ── Storage Helper ────────────────────────────────────────────────────────────
 const Storage = {
   get(key) {
-    try { return JSON.parse(localStorage.getItem(`BlogCraft_${key}`)); }
-    catch { return null; }
+    try {
+      const val = localStorage.getItem(`DevLog_${key}`);
+      if (val !== null) return JSON.parse(val);
+      return JSON.parse(localStorage.getItem(`BlogCraft_${key}`));
+    } catch { return null; }
   },
-  set(key, val) { localStorage.setItem(`BlogCraft_${key}`, JSON.stringify(val)); },
-  remove(key)   { localStorage.removeItem(`BlogCraft_${key}`); },
+  set(key, val) {
+    localStorage.setItem(`DevLog_${key}`, JSON.stringify(val));
+  },
+  remove(key) {
+    localStorage.removeItem(`DevLog_${key}`);
+    localStorage.removeItem(`BlogCraft_${key}`);
+  },
 
   getUser()   { return this.get('user'); },
   setUser(u)  { this.set('user', u); },

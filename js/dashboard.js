@@ -1,5 +1,5 @@
 /* =========================================================
-   BlogCraft Dashboard
+   DevLog Dashboard
    Module 5 - Authentication & User Dashboard
    ========================================================= */
 
@@ -28,7 +28,7 @@ function escapeHTML(value) {
 
 
 function getToken() {
-  return localStorage.getItem("blogcraftToken");
+  return localStorage.getItem("devlogToken") || localStorage.getItem("blogcraftToken");
 }
 
 
@@ -54,6 +54,7 @@ function handleAuthFailure(
   message = "Session expired. Please login again."
 ) {
 
+  localStorage.removeItem("devlogToken");
   localStorage.removeItem("blogcraftToken");
 
   showToast(message, "error");
@@ -78,12 +79,12 @@ function normalizeDashboardBlog(
       ? (
         blog.author?.name ||
         fallbackUser?.name ||
-        "BlogCraft Author"
+        "DevLog Author"
       )
       : (
         blog.author ||
         fallbackUser?.name ||
-        "BlogCraft Author"
+        "DevLog Author"
       );
 
 
@@ -134,7 +135,7 @@ function normalizeDashboardBlog(
     description:
       blog.description ||
       plainText.slice(0, 180) ||
-      "Read this article on BlogCraft.",
+      "Read this article on DevLog.",
 
     content:
       blog.content ||
@@ -154,7 +155,7 @@ function normalizeDashboardBlog(
 
     authorInitials:
       initials ||
-      "BC",
+      "DL",
 
     authorEmail:
       authorEmail,
@@ -250,7 +251,7 @@ async function fetchMyBlogs(user) {
 
 
     console.log(
-      "BlogCraft: My blogs loaded:",
+      "DevLog: My blogs loaded:",
       dashboardBlogs.length
     );
 
@@ -261,7 +262,7 @@ async function fetchMyBlogs(user) {
   } catch (error) {
 
     console.error(
-      "BlogCraft: Failed to load my blogs:",
+      "DevLog: Failed to load my blogs:",
       error
     );
 
@@ -286,13 +287,13 @@ async function fetchMyBlogs(user) {
 
 function getUserInitials(userName) {
 
-  return String(userName || "BlogCraft User")
+  return String(userName || "DevLog User")
     .split(" ")
     .filter(Boolean)
     .map(name => name[0])
     .join("")
     .slice(0, 2)
-    .toUpperCase() || "BC";
+    .toUpperCase() || "DL";
 }
 
 
@@ -328,7 +329,7 @@ function updateDashboardUser(user) {
 
   const userName =
     user?.name ||
-    "BlogCraft User";
+    "DevLog User";
 
   const userEmail =
     user?.email ||
@@ -501,7 +502,7 @@ function updateDashboardUser(user) {
 
 
   console.log(
-    "BlogCraft: Dashboard user loaded:",
+    "DevLog: Dashboard user loaded:",
     userName,
     userEmail
   );
@@ -565,7 +566,7 @@ async function initDashboard() {
 
 
   console.log(
-    "BlogCraft dashboard — logged-in user articles:",
+    "DevLog dashboard — logged-in user articles:",
     dashboardBlogs.length
   );
 }
@@ -787,7 +788,7 @@ function updateMyArticlesBadge() {
   const count = dashboardBlogs.length;
 
   console.log(
-    "BlogCraft: Updating My Articles badge:",
+    "DevLog: Updating My Articles badge:",
     count
   );
 
@@ -875,7 +876,7 @@ function updateMyArticlesBadge() {
           count;
 
         console.log(
-          "BlogCraft: My Articles badge updated:",
+          "DevLog: My Articles badge updated:",
           count
         );
 
@@ -937,7 +938,7 @@ function updateMyArticlesBadge() {
             count;
 
           console.log(
-            "BlogCraft: Static My Articles badge replaced:",
+            "DevLog: Static My Articles badge replaced:",
             count
           );
         }
@@ -958,7 +959,7 @@ function loadContentTable() {
   if (!tableBody) {
 
     console.warn(
-      "BlogCraft: Dashboard table body not found."
+      "DevLog: Dashboard table body not found."
     );
 
     return;
@@ -1509,6 +1510,9 @@ function initSidebar() {
           }
 
 
+          localStorage.removeItem(
+            "devlogToken"
+          );
           localStorage.removeItem(
             "blogcraftToken"
           );
@@ -2346,7 +2350,7 @@ async function initCreatePage() {
 
             author:
               user.name ||
-              "BlogCraft Author",
+              "DevLog Author",
 
             authorEmail:
               user.email ||

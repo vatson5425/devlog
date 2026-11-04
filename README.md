@@ -1,6 +1,6 @@
-# BlogCraft — Full-Stack Blogging Platform
+# DevLog — Full-Stack Blogging Platform
 
-BlogCraft is a responsive full-stack blogging platform developed as part of my internship at **Codomax Digital Solutions**. It allows users to register, log in, create articles, upload cover images, view blog details, and manage their own content.
+DevLog is a responsive full-stack blogging platform developed as part of my internship at **Codomax Digital Solutions**. It allows users to register, log in, create articles, upload cover images, view blog details, and manage their own content.
 
 ## Features
 
@@ -25,7 +25,7 @@ BlogCraft is a responsive full-stack blogging platform developed as part of my i
 
 ## Project Links
 
-- **GitHub Repository:** https://github.com/Monesh782005/blogcraft
+- **GitHub Repository:** https://github.com/vatson5425/devlog
 - **Live Website:** https://precious-douhua-ac6efe.netlify.app
 - **Backend API:** https://blogcraft-lfmi.onrender.com
 
@@ -34,8 +34,8 @@ BlogCraft is a responsive full-stack blogging platform developed as part of my i
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Monesh782005/blogcraft.git
-cd blogcraft
+git clone https://github.com/vatson5425/devlog.git
+cd devlog
 ```
 
 ### 2. Run the frontend

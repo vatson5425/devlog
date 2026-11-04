@@ -1,5 +1,5 @@
 /**
- * BlogCraft — fixBrokenImages.js
+ * DevLog — fixBrokenImages.js
  * One-time migration: fixes blog documents that reference broken
  * or non-existent image paths stored in MongoDB.
  *
@@ -89,7 +89,7 @@ function getCorrectImage(title) {
 
 // ── Main migration ────────────────────────────────────────────────────────────
 async function run() {
-  console.log('BlogCraft Image Migration — connecting to MongoDB...');
+  console.log('DevLog Image Migration — connecting to MongoDB...');
 
   await mongoose.connect(process.env.MONGODB_URI);
   console.log('Connected.');

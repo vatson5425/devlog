@@ -1,5 +1,5 @@
-﻿/**
- * BlogCraft — auth.js
+/**
+ * DevLog — auth.js
  * Login and Registration logic with backend API integration
  */
 
@@ -287,10 +287,8 @@ function initLogin() {
         .toUpperCase();
 
       // Store JWT token
-      localStorage.setItem(
-        'blogcraftToken',
-        data.token
-      );
+      localStorage.setItem('devlogToken', data.token);
+      localStorage.setItem('blogcraftToken', data.token);
 
       // Store logged-in user using existing Storage helper
       const sessionUser = {
@@ -305,10 +303,8 @@ function initLogin() {
       if (typeof Storage !== 'undefined' && Storage.setUser) {
         Storage.setUser(sessionUser);
       } else {
-        localStorage.setItem(
-          'blogcraftUser',
-          JSON.stringify(sessionUser)
-        );
+        localStorage.setItem('devlogUser', JSON.stringify(sessionUser));
+        localStorage.setItem('blogcraftUser', JSON.stringify(sessionUser));
       }
 
       Toast.show(
@@ -541,7 +537,7 @@ function initRegister() {
 
       // Registration successful
       Toast.show(
-        `Account created! Welcome to BlogCraft, ${name}!`,
+        `Account created! Welcome to DevLog, ${name}!`,
         'success'
       );
 
