@@ -27,7 +27,7 @@ DevLog is a responsive full-stack blogging platform developed as part of my inte
 
 - **GitHub Repository:** https://github.com/vatson5425/devlog
 - **Live Website:** https://precious-douhua-ac6efe.netlify.app
-- **Backend API:** https://blogcraft-lfmi.onrender.com
+- **Backend API:** https://devlog-api.onrender.com (deploy to Render — set env vars in dashboard)
 
 ## Run Locally
 
