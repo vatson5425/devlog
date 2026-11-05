@@ -221,3 +221,4 @@ export function normalizeBlog(blog) {
     userId: typeof blog.author === 'object' ? blog.author?._id : blog.author
   };
 }
+

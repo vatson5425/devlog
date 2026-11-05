@@ -12,3 +12,4 @@ export function getAuthHeaders() {
     ...(token ? { Authorization: `Bearer ${token}` } : {})
   };
 }
+

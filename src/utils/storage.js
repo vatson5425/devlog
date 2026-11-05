@@ -51,3 +51,4 @@ export const Storage = {
     localStorage.removeItem('blogcraftToken');
   }
 };
+
