@@ -17,11 +17,11 @@ DevLog is a responsive full-stack blogging platform developed as part of my inte
 
 ## Tech Stack
 
-**Frontend:** HTML5, CSS3, JavaScript  
+**Frontend:** React 19, Vite, React Router, CSS3  
 **Backend:** Node.js, Express.js  
 **Database:** MongoDB  
 **Authentication:** JSON Web Tokens (JWT)  
-**Deployment:** Netlify (frontend), Render (backend)
+**Deployment:** Netlify / Vercel (frontend), Render (backend)
 
 ## Project Links
 
@@ -38,15 +38,20 @@ git clone https://github.com/vatson5425/devlog.git
 cd devlog
 ```
 
-### 2. Run the frontend
-
-Serve the project root using a local static server, such as:
+### 2. Run the frontend (React + Vite)
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
-Open the local URL provided by the server.
+The application will start on `http://localhost:5173`.
+
+To build for production:
+
+```bash
+npm run build
+```
 
 ### 3. Run the backend
 
