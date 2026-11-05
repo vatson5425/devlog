@@ -3,7 +3,7 @@
    Module 5 - Authentication & User Dashboard
    ========================================================= */
 
-const DASHBOARD_API_BASE_URL = "https://blogcraft-lfmi.onrender.com/api";
+const DASHBOARD_API_BASE_URL = "http://localhost:5000/api";
 
 let dashboardBlogs = [];
 

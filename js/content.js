@@ -6,7 +6,7 @@
 
 'use strict';
 
-const API_BASE_URL = 'https://blogcraft-lfmi.onrender.com/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // ══════════════════════════════════════════════════════════════════════════════
 // LOCAL SEED CONTENT
